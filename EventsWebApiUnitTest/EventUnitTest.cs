@@ -1,18 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Threading.Tasks;
 using EventsWebApiCore.Controllers;
-using EventsWebApiCore.Data;
 using EventsWebApiCore.Models;
 using EventsWebApiCore.Services;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Moq;
-using Xunit;
 
 namespace EventsWebApiCore.Tests
 {
