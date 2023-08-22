@@ -20,7 +20,7 @@ namespace EventsWebApiCore.Controllers
         [HttpGet("GetEvents")]
         public async Task<IEnumerable<Event>> GetEvents(
              [FromQuery] int page = 1,
-             [FromQuery] int pageSize = 10)
+             [FromQuery] int pageSize = 20)
         {
             return await eventService.GetEvents(page, pageSize);
         }
@@ -49,7 +49,7 @@ namespace EventsWebApiCore.Controllers
         [HttpPut("EditEventDetails")]
         public async Task<IActionResult> EditEvent([FromBody] Event updatedEvent)
         {
-            var updatedEventObj = eventService.CreateEvent(updatedEvent);
+            var updatedEventObj = await eventService.UpdateEventDetails(updatedEvent);
 
             if (updatedEventObj == null)
             {
@@ -59,6 +59,12 @@ namespace EventsWebApiCore.Controllers
             {
                 return Ok(updatedEventObj);
             }
+        }
+
+        [HttpDelete("DeleteEvent")]
+        public bool DeleteEvent(int Id)
+        {
+            return eventService.DeleteEvent(Id);
         }
     }
 }

@@ -47,5 +47,53 @@ namespace EventsWebApiCore.Tests
             //assert
             Assert.NotNull(eventResult);
         }
+
+        [Fact]
+        public void CreateEvent()
+        {
+            Event eventObj = new Event();
+            eventObj.Id = 1;
+            eventObj.Title = "test";
+            eventObj.Description = "test descrp";
+            eventObj.EventDateTimeOffset = DateTimeOffset.Now;
+
+            var eventsController = new EventsController(eventService.Object);
+
+            //act
+            var eventResult = eventsController.CreateEvent(eventObj);
+
+            //assert
+            Assert.NotNull(eventResult);
+        }
+
+        [Fact]
+        public void EditEvent()
+        {
+            Event eventObj = new Event();
+            eventObj.Id = 1;
+            eventObj.Title = "test";
+            eventObj.Description = "test descrp";
+            eventObj.EventDateTimeOffset = DateTimeOffset.Now;
+
+            var eventsController = new EventsController(eventService.Object);
+
+            //act
+            var eventResult = eventsController.EditEvent(eventObj);
+
+            //assert
+            Assert.NotNull(eventResult);
+        }
+
+        [Fact]
+        public void DeleteEvent()
+        {
+            var eventsController = new EventsController(eventService.Object);
+
+            //act
+            var eventResult = eventsController.DeleteEvent(1);
+
+            //assert
+            Assert.NotNull(eventResult);
+        }
     }
 }

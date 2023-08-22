@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace EventsWebApiCore.Models
+﻿namespace EventsWebApiCore.Models
 {
     public class UserModel
     {
@@ -40,5 +33,4 @@ namespace EventsWebApiCore.Models
         public string CatchPhrase { get; set; }
         public string Bs { get; set; }
     }
-
 }

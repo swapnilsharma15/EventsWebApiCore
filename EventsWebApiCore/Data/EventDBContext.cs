@@ -26,11 +26,11 @@ namespace EventsWebApiCore.Data
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Event>()
-                .ToTable("EventTable"); // Configure the table name
+                .ToTable("EventTable");
 
             modelBuilder.Entity<Event>()
                 .Property(e => e.Id)
-                .ValueGeneratedOnAdd(); // Configure Id as auto-incremented
+                .ValueGeneratedOnAdd();
         }
     }
 }

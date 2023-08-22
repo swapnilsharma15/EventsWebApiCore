@@ -1,7 +1,6 @@
 ﻿using EventsWebApiCore.Data;
 using EventsWebApiCore.HelperMethods;
 using EventsWebApiCore.Models;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
 namespace EventsWebApiCore.Services
@@ -41,7 +40,6 @@ namespace EventsWebApiCore.Services
         {
             var query = _dbContext.Events.AsQueryable();
 
-            // Calculate the number of items to skip based on the page and pageSize
             int skip = (page - 1) * pageSize;
 
             var events = await query
@@ -75,6 +73,14 @@ namespace EventsWebApiCore.Services
             await _dbContext.SaveChangesAsync();
 
             return existingEvent;
+        }
+
+        public bool DeleteEvent(int Id)
+        {
+            var filteredData = _dbContext.Events.Where(x => x.Id == Id).FirstOrDefault();
+            var result = _dbContext.Remove(filteredData);
+            _dbContext.SaveChanges();
+            return result != null ? true : false;
         }
     }
 }
